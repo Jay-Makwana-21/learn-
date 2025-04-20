@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            background-color: rgb(0, 166, 255);
+        }
+        div{
+            background-color: white;
+            height: 200px;
+            width: 300px;
+            padding-top: 1px;
+            padding-bottom: 20px;
+            border-radius: 15px;
+        box-shadow: 5px 5px 15px ;
+        }
+        button{
+            background-color: rgb(0, 252, 0);
+            height: 30px;
+            width: 60px;
+            border-radius: 8px;
+        }
+        #para{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <center><div>
+        <h1>Login Form</h1>
+        <form onsubmit="return validate()">
+        <p id="username">Username <input type="text" id="text"><br>
+        <p id="password">Password <input type="password" id="pass"></p>
+        <button>Login</button>
+        <p id="para"></p>
+    </form>
+    </div>
+</center>
+<script>
+    function validate()
+    {
+    let userName = "Jay", password = "abc@123";                                        
+    let u = document.getElementById("text");
+    let p = document.getElementById("pass");
+    if(u.value == "")
+    {
+        document.getElementById("text").innerText ="Field cannot be empty";
+        return false;
+    }
+    else if(u.value.length <2)
+    {
+        document.getElementById("text").innerText = "No of characters should be more than 2";
+        return false;
+    }
+    else if (u.value != userName || p.value != password)
+    {
+        document.getElementById("para").innerText = "Username or password is incorect";
+        return false;
+    }
+    else
+    alert("Sucessful login");
+    return true;
+}  
+</script>
+</body>
+</html>

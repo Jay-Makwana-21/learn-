@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colour Picker</title>
+    <style>
+        #d1{
+            background-color: white;
+            height: 400px;
+            width: 600px;
+            padding-top: 30px;
+            border-radius: 20px;
+        box-shadow: 5px 5px 15px ;
+        }
+        #color{
+            height: 70px;
+            width: 70px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <center><div id="d1">
+        <h1>Colour Picker</h1><br><br><br>
+        <input type="color" id="color"><br><br><br><br>
+        <p id="para"></p>   
+    </div></center>
+    <script>
+        let c = document.getElementById("color");
+        let p = document.getElementById("para");
+        c.addEventListener('input',function(){
+        document.body.style.background = c.value;
+        p.innerText = c.value;
+    });
+    </script>
+</body> sssssss
+</html>

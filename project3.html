@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ff0062;
+        }
+        
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: rgb(0, 0, 0);
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: rgb(255, 0, 0);
+        }
+        
+        h3 {
+            margin-bottom: 20px;
+        }
+        
+        .start-button, .reset-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .start-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        
+        .start-button:hover {
+            background-color: #0056b3;
+        }
+        
+        .reset-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+        }
+        
+        .reset-button:hover {
+            background-color: #d32f2f;
+        }
+        
+        .message {
+            font-size: 24px;
+            color: red;
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Countdown Timer</h1>
+        <h2 id="timerLabel"><span id="timer">10</span> Seconds</h2>
+        <h3>
+            <button id="startButton" class="start-button">Start</button>
+            <button id="resetButton" class="reset-button">Reset</button>
+        </h3>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        let countdown = 10;
+let timerElement = document.getElementById("timer");
+let messageElement = document.getElementById("message");
+let startButton = document.getElementById("startButton");
+let resetButton = document.getElementById("resetButton");
+
+let timerInterval;
+
+function updateTimer() {
+    timerElement.textContent = countdown;
+    countdown--;
+
+    if (countdown < 0) {
+        clearInterval(timerInterval);
+        messageElement.textContent = "Time is Over!";
+    }
+}
+
+startButton.addEventListener("click", function() {
+    startButton.disabled = true;
+    startButton.textContent = "Started";
+
+    timerInterval = setInterval(updateTimer, 1000);
+});
+
+resetButton.addEventListener("click", function() {
+    
+    countdown = 10;
+    timerElement.textContent = countdown;
+    messageElement.textContent = "";
+    
+    startButton.disabled = false;
+    startButton.textContent = "Start";
+
+    clearInterval(timerInterval);
+});
+    </script>
+</body>
+</html>
